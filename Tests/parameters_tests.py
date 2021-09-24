@@ -1,5 +1,6 @@
 import unittest
 import addition
+import volume_cone
 
 
 class MyTestCase(unittest.TestCase):
@@ -43,7 +44,18 @@ class MyTestCase(unittest.TestCase):
         and a negative number
         :return: none
         """
-        pass
+        import sys
+        from io import StringIO
+
+        saved_stdout = sys.stdout
+        try:
+            out = StringIO()
+            sys.stdout = out
+            addition.add_two(-5, 2)
+            output = out.getvalue().strip()
+            assert output == "The sum of -5 and 2 is -3"
+        finally:
+            sys.stdout = saved_stdout
 
     def test_adding_two_negatives(self):
         """
@@ -51,8 +63,32 @@ class MyTestCase(unittest.TestCase):
         negative numbers.
         :return: none
         """
-        pass
+        import sys
+        from io import StringIO
 
+        saved_stdout = sys.stdout
+        try:
+            out = StringIO()
+            sys.stdout = out
+            addition.add_two(-7, -3)
+            output = out.getvalue().strip()
+            assert output == "The sum of -7 and -3 is -10"
+        finally:
+            sys.stdout = saved_stdout
+
+    def test_cone_height_zero(self):
+        import sys
+        from io import StringIO
+
+        saved_stdout = sys.stdout
+        try:
+            out = StringIO()
+            sys.stdout = out
+            volume_cone.find_vol(0, 0, 0)
+            output = out.getvalue().strip()
+            assert output == "the volume of a cone with _ _ _ _ is 0"
+        finally:
+            sys.stdout = saved_stdout
 
 if __name__ == '__main__':
     unittest.main()

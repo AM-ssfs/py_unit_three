@@ -1,3 +1,4 @@
+import math
 import unittest
 import addition
 import volume_cone
@@ -76,6 +77,9 @@ class MyTestCase(unittest.TestCase):
         finally:
             sys.stdout = saved_stdout
 
+
+
+
     def test_cone_height_zero(self):
         import sys
         from io import StringIO
@@ -84,9 +88,25 @@ class MyTestCase(unittest.TestCase):
         try:
             out = StringIO()
             sys.stdout = out
-            volume_cone.find_vol(0, 0, 0)
+            volume_cone.find_vol(10, 0)
             output = out.getvalue().strip()
-            assert output == "the volume of a cone with _ _ _ _ is 0"
+            assert output == "the volume of a cone with 10 radius and 0 height is 0"
+        finally:
+            sys.stdout = saved_stdout
+
+
+
+    def test_cone_10_3(self):
+        import sys
+        from io import StringIO
+
+        saved_stdout = sys.stdout
+        try:
+            out = StringIO()
+            sys.stdout = out
+            volume_cone.find_vol(10, 6)
+            output = out.getvalue().strip()
+            assert output == "the volume of a cone with 10 radius and 6 height is " + str(int(200 * (math.pi)))
         finally:
             sys.stdout = saved_stdout
 

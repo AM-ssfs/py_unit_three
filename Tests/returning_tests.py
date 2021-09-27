@@ -4,13 +4,14 @@ import triangle_area
 
 class MyTestCase(unittest.TestCase):
 
-    def test_return_addtion(self):
+    def test_return_add_two(self):
 
-        self.assertEqual(15, return_addtion.add_two(7, 8))
-        self.assertEqual(45, return_addtion.add_two(40, 5))
-        # Add two more tests of your own below here
+        self.assertEqual(1, return_addtion.add_two(-7, 8))
+        self.assertEqual(-14, return_addtion.add_two(-11, -3))
+
 
     def test_triangle_area(self):
+        pass
         self.assertEqual(6.0, triangle_area.area(3, 4, 5))
 
 
